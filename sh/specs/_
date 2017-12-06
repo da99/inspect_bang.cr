@@ -31,7 +31,6 @@ case "$ACTION" in
 
     sh_color ORANGE "=== {{Compiling}}: specs ..."
     my_crystal __ build specs/specs.cr -o tmp/out/inspect.dev.specs
-
     sh_color ORANGE "=== {{Running}}: specs ..."
     tmp/out/inspect.dev.specs
     sh_color GREEN "=== {{DONE}} running specs ==="
