@@ -1,0 +1,5 @@
+name: inspect_bang.cr
+version: 0.0.0
+development_dependencies:
+  shell_out:
+    github: da99/shell_out

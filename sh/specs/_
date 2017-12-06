@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+#
+# === {{CMD}}
+#
+set -u -e -o pipefail
+
+local +x ORIGINAL_ARGS="$@"
+
+if [[ -z "$@" ]]; then
+  local +x ACTION="watch"
+else
+  local +x ACTION="$1"; shift
+fi
+
+case "$ACTION" in
+
+  watch)
+    local +x CMD="$THIS_NAME specs run"
+    ${=CMD} || :
+    process watch "-r sh -r src -r specs" "$CMD"
+    ;;
+
+  run)
+    cd "$THIS_DIR"
+    mkdir -p tmp/in tmp/out
+    sh_color ORANGE "=== {{Compiling}}: IS_DEV=true ..."
+    IS_DEV=true my_crystal __ build specs/run.cr -o tmp/out/inspect.bang.dev
+
+    sh_color ORANGE "=== {{Compiling}}: IS_DEV=\"\" ..."
+    IS_DEV="" my_crystal __ build specs/run.cr -o tmp/out/inspect.bang.prod
+
+    sh_color ORANGE "=== {{Compiling}}: specs ..."
+    my_crystal __ build specs/specs.cr -o tmp/out/inspect.dev.specs
+
+    sh_color ORANGE "=== {{Running}}: specs ..."
+    tmp/out/inspect.dev.specs
+    sh_color GREEN "=== {{DONE}} running specs ==="
+    ;;
+
+  *)
+    echo "!!! Unknown arguments: $ORIGINAL_ARGS" >&2
+    exit 1
+    ;;
+
+esac
+

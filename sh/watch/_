@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+#
+# === {{CMD}} # alias of: {{BIN}} specs
+#
+set -u -e -o pipefail
+
+local +x ORIGINAL_ARGS="$@"
+
+$THIS_NAME specs $@
