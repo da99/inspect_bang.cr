@@ -1,5 +1,5 @@
 ---
-name: inspect_bang.cr
+name: inspect_bang
 version: 1.0.0
 development_dependencies:
   shell_out:
