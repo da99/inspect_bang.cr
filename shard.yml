@@ -3,4 +3,4 @@ name: inspect_bang
 version: 1.0.1
 development_dependencies:
   shell_out:
-    github: da99/shell_out
+    github: da99/shell_out.cr
