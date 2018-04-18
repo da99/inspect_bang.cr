@@ -4,7 +4,7 @@ require "shell_out"
 
 describe "inspect!" do
 
-  it "prints inspected values if IS_DEV is non-empty" do
+  it "prints inspected values if IS_DEVELOPMENT is non-empty" do
     shell_out("tmp/out/inspect.bang.dev").strip.should eq(
     %[
       :a
@@ -14,8 +14,8 @@ describe "inspect!" do
     )
   end # === it "prints inspected values if IS_DEV is non-empty"
 
-  it "doesn't print anything if IS_DEV is empty" do
+  it "doesn't print anything if IS_DEVELOPMENT is empty" do
     shell_out("tmp/out/inspect.bang.prod").strip.empty?.should eq(true)
-  end # === it "doesn't print anything if IS_DEV is empty"
+  end # === it "doesn't print anything if IS_DEVELOPMENT is empty"
 
 end # === desc "inspect!"

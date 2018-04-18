@@ -23,11 +23,11 @@ case "$ACTION" in
   run)
     cd "$THIS_DIR"
     mkdir -p tmp/in tmp/out
-    sh_color ORANGE "=== {{Compiling}}: IS_DEV=true ..."
-    IS_DEV=true my_crystal __ build specs/run.cr -o tmp/out/inspect.bang.dev
+    sh_color ORANGE "=== {{Compiling}}: IS_DEVELOPMENT=true ..."
+    IS_DEVELOPMENT=true my_crystal __ build specs/run.cr -o tmp/out/inspect.bang.dev
 
-    sh_color ORANGE "=== {{Compiling}}: IS_DEV=\"\" ..."
-    IS_DEV="" my_crystal __ build specs/run.cr -o tmp/out/inspect.bang.prod
+    sh_color ORANGE "=== {{Compiling}}: IS_DEVELOPMENT=\"\" ..."
+    IS_DEVELOPMENT="" my_crystal __ build specs/run.cr -o tmp/out/inspect.bang.prod
 
     sh_color ORANGE "=== {{Compiling}}: specs ..."
     my_crystal __ build specs/specs.cr -o tmp/out/inspect.dev.specs
